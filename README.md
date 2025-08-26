@@ -10,7 +10,18 @@ Uma aplicação moderna e responsiva de CRM (Customer Relationship Management) c
 * **Gestão de Estado Reativa:** O estado do usuário é gerenciado de forma reativa com RxJS (`BehaviorSubject`), garantindo que a UI responda instantaneamente às mudanças de autenticação.
 * **Estilização com SCSS e BEM:** A interface foi construída sem frameworks de UI como Tailwind, utilizando SCSS puro com a metodologia BEM para um CSS encapsulado e escalável.
 * **Roteamento e Guards:** Navegação protegida utilizando Route Guards para garantir que apenas usuários autenticados acessem as áreas restritas.
+* **Arquitetura de Roteamento Robusta:**
+    * **Route Guards** para proteger rotas (`authGuard`) e gerenciar o fluxo de login (`loginGuard`).
+    * Redirecionamento automático após login/logout.
 
+## 🏛️ Decisões de Arquitetura
+
+Este projeto foi construído com foco em padrões de design modernos para criar uma base escalável e de fácil manutenção.
+
+* **Angular Standalone API:** A aplicação utiliza a arquitetura de componentes, diretivas e pipes standalone, eliminando a necessidade de `NgModules` e promovendo uma estrutura de dependências mais explícita e modular.
+* **Estilização com SCSS + BEM:** Todo o CSS foi escrito do zero utilizando SCSS e a metodologia **BEM (Block, Element, Modifier)**. Essa abordagem garante um CSS encapsulado, sem conflitos e auto-documentado, sem a dependência de frameworks de UI como o Tailwind.
+* **Serviços Centralizados:** A lógica de negócio e as chamadas de API são abstraídas em serviços injetáveis na camada `core`, mantendo os componentes "magros" e focados apenas na lógica de apresentação.
+* **Componentes Smart vs. Dumb:** A estrutura dos componentes segue o padrão "Smart/Container" (nas páginas) e "Dumb/Presentation" (em `shared`), onde componentes reutilizáveis recebem dados via `@Input` e emitem eventos via `@Output`, aumentando a reutilização e facilitando os testes.
 ---
 ## 🛠️ Tech Stack
 

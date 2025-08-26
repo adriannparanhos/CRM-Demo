@@ -1,3 +1,55 @@
-<div class="">
-    <p>登录</p>
+<div class="login-page">
+  <div class="login-page__container">
+        <header class="login-page__header">
+            <h1 class="login-page__title">Demo</h1>
+            <p class="login-page__subtitle">Sistema de orçamentos</p>
+        </header>
+
+        <main class="login-page__card">
+        <h2 class="login-page__form-title">Entrar</h2>
+        
+            <form class="login-page__form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="login-page__form-group">
+                    <label for="login" class="login-page__label">Usuário</label>
+                    <input 
+                        type="text" 
+                        id="login" 
+                        formControlName="login" 
+                        placeholder="seu.login"
+                        class="login-page__input"
+                    >
+                </div>
+                
+                <div class="login-page__form-group">
+                    <label for="password" class="login-page__label">Senha</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        formControlName="password" 
+                        placeholder="********"
+                        class="login-page__input"
+                    >
+                </div>
+                
+                <div *ngIf="errorMessage" class="login-page__error-message">
+                    {{ errorMessage }}
+                </div>
+                
+                <button type="submit" [disabled]="loginForm.invalid" class="login-page__submit-btn">
+                Entrar
+                </button>
+                <label for="google-login" class="login-page__google-login">Entrar com google ?</label>
+            </form>
+            <app-login-button></app-login-button>
+        </main>
+
+        <footer class="login-page__footer">
+            <p>
+                Esqueceu sua
+                <a routerLink="/forgot-password" class="login-page__link">
+                senha?
+                </a>
+            </p>
+        </footer>
+    </div>
 </div>

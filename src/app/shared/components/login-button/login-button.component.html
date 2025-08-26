@@ -1,0 +1,25 @@
+<ng-container *ngIf="authService.user$ | async as user; else showLoginButton">
+
+  <div class="flex items-center space-x-4">
+    <img [src]="user.photoUrl" alt="Foto de {{ user.name }}" class="w-10 h-10 rounded-full">
+    <div>
+      <p class="font-semibold">{{ user.name }}</p>
+      <p class="text-sm text-gray-500">{{ user.email }}</p>
+    </div>
+    <button (click)="signOut()" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">
+      Sair
+    </button>
+  </div>
+
+</ng-container>
+
+<ng-template #showLoginButton>
+  <asl-google-signin-button 
+      type="standard" 
+      size="large"
+      theme="outline"
+      shape="rectangular"
+      text="signin_with"
+      logo_alignment="left">
+  </asl-google-signin-button>
+</ng-template>

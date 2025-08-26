@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-main-layout',
-  imports: [],
+  standalone: true,
+  imports: [LucideAngularModule],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.scss'
 })

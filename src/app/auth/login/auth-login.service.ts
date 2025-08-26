@@ -21,6 +21,7 @@ export class AuthLoginService {
       if (user) {
         const idToken = user.idToken;
         console.log("Recebido ID token do google", idToken);
+        this.router.navigate(['/homepage']);
       }
     })
   }
@@ -31,7 +32,6 @@ export class AuthLoginService {
 
   signInWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    this.router.navigate(['/homepage']);
   }
 
   signOut(): void {

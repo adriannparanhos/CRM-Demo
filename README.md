@@ -54,5 +54,5 @@ Siga os passos abaixo para configurar e executar o ambiente de desenvolvimento.
 
 ### 1. Clone o Repositório
 ```bash
-git clone [https://github.com/adriannparanhos/CRM-Demo.git](https://github.com/adriannparanhos/CRM-Demo.git)
+git clone https://github.com/adriannparanhos/CRM-Demo.git
 cd crm-demo

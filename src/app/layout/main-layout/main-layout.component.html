@@ -1,13 +1,62 @@
-<div>
-    <!-- Para mobile-->
-    <!-- <header>
-        <button class="lg:hidden text-gray-500 hover:text-black mr-4">
-            <i-lucide name="menu" class="w-6 h-6"></i-lucide>
-        </button>
-    </header> -->
-
-    <div class="header">
-        <i-lucide name="newspaper" class="header__icon"></i-lucide>
-        <span>Demo CRM</span>
+<div class="app-layout">
+  <header class="app-header">
+    <button class="app-header__toggle-btn" (click)="toggleSidebar()">
+      <i-lucide name="menu"></i-lucide>
+    </button>
+    
+    <div class="app-header__brand">
+      <i-lucide name="file-box" class="app-header__logo"></i-lucide>
+      <span class="app-header__title">Demo - CRM</span>
     </div>
+    
+    <div class="app-header__spacer"></div>
+    
+    <button *ngIf="isSidebarOpen" class="app-header__toggle-btn app-header__toggle-btn--close" (click)="toggleSidebar()">
+      <i-lucide name="x"></i-lucide>
+    </button>
+  </header>
+
+  <div class="app-body">
+    <div *ngIf="isSidebarOpen" class="app-body__backdrop" (click)="toggleSidebar()"></div>
+
+    <aside class="app-sidebar" [class.app-sidebar--open]="isSidebarOpen">
+      <div class="app-sidebar__inner">
+        <nav class="app-sidebar__nav">
+          <ul class="app-sidebar__nav-list">
+            <li *ngFor="let item of navigationItems" class="app-sidebar__nav-item">
+              <a [routerLink]="item.path" 
+                 routerLinkActive="app-sidebar__nav-link--active" 
+                 [routerLinkActiveOptions]="{ exact: true }"
+                 class="app-sidebar__nav-link"
+                 (click)="isSidebarOpen && toggleSidebar()">
+                <i-lucide [name]="item.icon" class="app-sidebar__nav-icon"></i-lucide>
+                {{ item.name }}
+              </a>
+            </li>
+          </ul>
+        </nav>
+        
+        <div class="app-sidebar__profile">
+          <a routerLink="/settings" routerLinkActive="app-sidebar__profile-link--active" class="app-sidebar__profile-link">
+            <div *ngIf="user && user.photoUrl" class="app-sidebar__profile-avatar">
+              <img [src]="user.photoUrl" alt="Foto do Perfil">
+            </div>
+            <div class="app-sidebar__profile-info">
+              <p class="app-sidebar__profile-name">{{ user?.name }}</p>
+              <p class="app-sidebar__profile-email">{{ user?.email }}</p>
+            </div>
+            <button class="app-sidebar__logout-btn" title="Sair" (click)="logout(); $event.stopPropagation()">
+              <i-lucide name="log-out"></i-lucide>
+            </button>
+          </a>
+        </div>
+      </div>
+    </aside>
+    
+    <main class="app-content">
+      <div class="app-content__scroll-area">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
 </div>

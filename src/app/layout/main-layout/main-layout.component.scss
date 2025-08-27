@@ -1,13 +1,236 @@
 @use '../../../styles/variables' as *;
 
-.header {
+$sidebar-width: 256px;
+$header-height: 64px;
+$breakpoint-lg: 1024px;
+
+// --- Bloco: Layout Geral ---
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $background-color;
+  font-family: $font-family-sans;
+}
+
+// --- Bloco: Cabeçalho ---
+.app-header {
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  width: 100%;
+  height: $header-height;
+  padding: 0 1.5rem;
+  background-color: $card-background;
+  border-bottom: 1px solid $border-color;
+
+  &__toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $text-secondary;
+    margin-right: 1rem;
+    padding: 0.5rem;
+
+    &:hover {
+      color: $text-primary;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      display: none;
+    }
+  }
+
+  &__brand {
     display: flex;
     align-items: center;
-    padding: 1rem;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    gap: 0.5rem;
+  }
+  
+  &__logo {
+    width: 24px;
+    height: 24px;
+    color: $primary-color;
+  }
+  
+  &__title {
+    font-size: 1.125rem;
+    font-weight: $font-weight-bold;
+    color: $primary-color;
+  }
 
-    &__icon {
-        color: $icon-color;
+  &__spacer {
+    flex: 1 1 0%;
+  }
+}
+
+// --- Bloco: Corpo da Aplicação ---
+.app-body {
+  display: flex;
+  flex: 1 1 0%;
+
+  &__backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    @media (min-width: $breakpoint-lg) {
+      display: none;
     }
+  }
+}
+
+// --- Bloco: Sidebar ---
+.app-sidebar {
+  position: fixed;
+  top: $header-height;
+  bottom: 0;
+  left: 0;
+  z-index: 30;
+  width: $sidebar-width;
+  background-color: $card-background;
+  box-shadow: $box-shadow;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+
+  &--open {
+    transform: translateX(0);
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    position: static;
+    transform: translateX(0);
+    height: auto;
+    box-shadow: none;
+    border-right: 1px solid $border-color;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__nav {
+    flex: 1 1 0%;
+    padding: 1rem 0.5rem;
+    overflow-y: auto;
+  }
+
+  &__nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    border-radius: $border-radius;
+    color: $text-secondary;
+    text-decoration: none;
+    transition: color 0.2s ease, background-color 0.2s ease;
+
+    &:hover {
+      background-color: lighten($primary-color, 40%);
+      color: $text-primary;
+    }
+
+    &--active {
+      background-color: $primary-color;
+      color: white;
+      font-weight: $font-weight-bold;
+
+      .app-sidebar__nav-icon {
+        color: white;
+      }
+    }
+  }
+
+  &__nav-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.75rem;
+  }
+
+  &__profile {
+    padding: 0.5rem;
+    border-top: 1px solid $border-color;
+  }
+
+  &__profile-link {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: $border-radius;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+
+    &:hover, &--active {
+      background-color: #f1f5f9; // Um cinza suave
+    }
+  }
+  
+  &__profile-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__profile-info {
+    margin-left: 0.75rem;
+    flex: 1 1 0%;
+  }
+
+  &__profile-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: $text-primary;
+  }
+
+  &__profile-email {
+    font-size: 0.75rem;
+    color: $text-secondary;
+  }
+
+  &__logout-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 0.75rem;
+    color: $primary-color;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $error-color;
+    }
+  }
+}
+
+// --- Bloco: Área de Conteúdo ---
+.app-content {
+  flex: 1 1 0%;
+  overflow: hidden; // Previne que o conteúdo cause scroll no layout principal
+  
+  &__scroll-area {
+    height: 100%;
+    overflow-y: auto;
+    padding: 1.5rem;
+  }
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Proposta } from '../models/Proposta';
-import { ColumnDef, ActionDef } from '../../../shared/components/resource-table/resource-table.component';
+import { ColumnDef } from '../../../shared/components/resource-table/models/ColumnDef';
+import { ActionDef } from '../../../shared/components/resource-table/models/ActionDef';
 import { PropostaService } from '../../../core/services/proposta/proposta.service';
 import { Router } from '@angular/router';
 import { ResourceTableComponent } from '../../../shared/components/resource-table/resource-table.component';
@@ -26,7 +27,7 @@ export class PropostaPageComponent implements OnInit {
 
   actions: ActionDef[] = [
     { id: 'view', icon: 'eye', label: 'Visualizar', colorClass: 'text-blue-500' },
-    { id: 'edit', icon: 'edit', label: 'Editar', colorClass: 'bg-yellow-500' },
+    { id: 'edit', icon: 'pencil', label: 'Editar', colorClass: 'bg-yellow-500' },
     { id: 'delete', icon: 'trash', label: 'Excluir', colorClass: 'bg-red-500' },
   ];
 
@@ -35,8 +36,7 @@ export class PropostaPageComponent implements OnInit {
     private router: Router ) {
 
   }
-
-
+  
   ngOnInit(): void {
     this.propostas$ = this.propostaService.getAll();
   }

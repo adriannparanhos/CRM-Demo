@@ -3,7 +3,6 @@ import { AuthLoginService } from '../../../auth/login/auth-login.service';
 import { CommonModule } from '@angular/common';
 import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login'; 
 
-
 @Component({
   selector: 'app-login-button',
   imports: [CommonModule, GoogleSigninButtonModule],

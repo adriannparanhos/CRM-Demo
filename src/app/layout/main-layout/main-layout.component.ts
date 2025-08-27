@@ -4,14 +4,9 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { AuthLoginService } from '../../auth/login/auth-login.service';
-import { SocialUser } from '@abacritt/angularx-social-login';
+import { User } from '../../auth/login/models/User';
 import { LucideAngularModule } from 'lucide-angular';
-
-interface NavigationItem {
-  path: string;
-  name: string;
-  icon: string;
-}
+import { NavigationItem } from './models/NavigationItem';
 
 @Component({
   selector: 'app-main-layout', 
@@ -30,7 +25,7 @@ export class MainLayoutComponent implements OnInit, OnDestroy {
 
   public isSidebarOpen = false;
   
-  public user: SocialUser | null = null;
+  public user: User | null = null;
   private userSubscription: Subscription | undefined;
 
   public readonly navigationItems: NavigationItem[] = [

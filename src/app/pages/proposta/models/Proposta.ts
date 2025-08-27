@@ -1,6 +1,6 @@
 export interface Proposta {
     id: number;
-    numeroPropsota: number;
+    numeroPropsota: string;
     razaoSocial: string;
     data: Date;
     valor: number;

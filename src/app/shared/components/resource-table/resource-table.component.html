@@ -8,8 +8,9 @@
   </header>
 
   <div class="resource-page__search-bar">
-    <i-lucide name="search"></i-lucide>
+    <i-lucide name="search" class="resource-page__search-icon"></i-lucide>
     <input type="text" 
+          class="resource-page__search-input"
           [placeholder]="searchPlaceholder" 
           (input)="onSearchInput($event)">
   </div>

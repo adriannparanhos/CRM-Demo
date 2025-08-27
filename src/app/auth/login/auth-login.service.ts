@@ -2,31 +2,45 @@ import { Injectable } from '@angular/core';
 import { SocialAuthService, GoogleLoginProvider, SocialUser } from '@abacritt/angularx-social-login';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { User } from './models/User';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthLoginService {
 
-  private userState = new BehaviorSubject<SocialUser | null>(null);
+  private userState = new BehaviorSubject<User | null>(null);
   public user$ = this.userState.asObservable();
 
   constructor(
     private socialAuthService: SocialAuthService,
     private router: Router
   ) {
-    this.socialAuthService.authState.subscribe(user => {
-      this.userState.next(user);
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+      this.userState.next(JSON.parse(savedUser));
+    }
 
-      if (user) {
-        const idToken = user.idToken;
-        console.log("Recebido ID token do google", idToken);
+    this.socialAuthService.authState.subscribe((googleUser: SocialUser | null) => {
+      if (googleUser) {
+        const user: User = {
+          id: googleUser.id,
+          name: googleUser.name,
+          email: googleUser.email,
+          photoUrl: googleUser.photoUrl,
+          idToken: googleUser.idToken
+        };
+
+        this.userState.next(user);
+        localStorage.setItem('user', JSON.stringify(user));
+
+        console.log("✅ Logado com Google, token:", user.idToken);
         this.router.navigate(['/homepage']);
       }
-    })
+    });
   }
 
-  public get currentUser(): SocialUser | null {
+  public get currentUser(): User | null {
     return this.userState.getValue();
   }
 
@@ -37,7 +51,10 @@ export class AuthLoginService {
   signOut(): void {
     this.socialAuthService.signOut().then(() => {
       this.userState.next(null);
+
+      localStorage.removeItem('user');
+
       this.router.navigate(['/login']);
-    })
+    });
   }
 }

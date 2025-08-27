@@ -1,19 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { CommonModule } from '@angular/common';
-
-export interface ColumnDef {
-  key: string;         
-  label: string;       
-  type?: 'text' | 'date' | 'currency' | 'status'; 
-}
-
-export interface ActionDef {
-  id: string;      
-  icon: string;   
-  label: string;   
-  colorClass: string; 
-}
+import { ColumnDef } from './models/ColumnDef';
+import { ActionDef } from './models/ActionDef';
 
 @Component({
   selector: 'app-resource-table',
@@ -40,10 +29,8 @@ export class ResourceTableComponent<T> {
   }
 
   onSearchInput(event: Event): void {
-    // Fazemos um "type cast" para dizer ao TypeScript que o target é um input
     const input = event.target as HTMLInputElement;
 
-    // Verificamos se o input existe antes de emitir o valor
     if (input) {
       this.searchChange.emit(input.value);
     }

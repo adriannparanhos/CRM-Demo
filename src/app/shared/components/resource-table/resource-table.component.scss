@@ -1,0 +1,76 @@
+@use '../../../../styles/variables' as *;
+
+$font-h1-size: 24px;
+
+.resource-page {
+    display: flex;
+    flex-direction: column;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__title {
+        color: $text-primary;
+        font-family: $font-family-sans;
+        font-size: $font-h1-size;
+        font-weight: $font-weight-bold; 
+    }
+
+    &__subtitle {
+        color: $text-secondary;
+        font-family: $font-family-sans;
+        font-size: $base-font-size;
+        font-weight: $font-weight-normal;
+    }
+
+    &__button {
+        color: $text-primary;
+        background-color: $primary-color;
+        font-family: $font-family-sans;
+        font-size: $base-font-size;
+        font-weight: $font-weight-bold; 
+        border: none;
+        border-radius: $border-radius;
+        box-shadow: $box-shadow;
+        padding: 0.5rem 1rem;
+        transition: background-color 0.3s ease;
+    }
+
+    &__button:hover {
+        background-color: $primary-color-hover;
+        transition: background-color 0.3s ease;
+    }
+
+    &__search-bar {
+        display: flex;
+        align-items: center;
+        background-color: $card-background;
+        border-radius: $border-radius;
+        padding: 0.5rem 1rem;
+        box-shadow: $box-shadow;
+    }
+
+    &__search-icon {
+        color: $icon-color;
+        margin-right: 0.5rem;
+    }
+
+    &__search-input {
+        flex: 1;
+        border: none;
+        background-color: transparent;
+        color: $text-primary;
+        font-family: $font-family-sans;
+        font-size: $base-font-size;
+        font-weight: $font-weight-normal;
+    }
+
+    &__table-wrapper {
+        flex: 1;
+        overflow: auto;
+        border: 1px solid $border-color;
+    }
+}

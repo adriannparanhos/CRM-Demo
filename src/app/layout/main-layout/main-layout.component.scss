@@ -4,7 +4,6 @@ $sidebar-width: 256px;
 $header-height: 64px;
 $breakpoint-lg: 1024px;
 
-// --- Bloco: Layout Geral ---
 .app-layout {
   display: flex;
   flex-direction: column;
@@ -13,7 +12,6 @@ $breakpoint-lg: 1024px;
   font-family: $font-family-sans;
 }
 
-// --- Bloco: Cabeçalho ---
 .app-header {
   display: flex;
   align-items: center;
@@ -66,7 +64,6 @@ $breakpoint-lg: 1024px;
   }
 }
 
-// --- Bloco: Corpo da Aplicação ---
 .app-body {
   display: flex;
   flex: 1 1 0%;
@@ -83,7 +80,6 @@ $breakpoint-lg: 1024px;
   }
 }
 
-// --- Bloco: Sidebar ---
 .app-sidebar {
   position: fixed;
   top: $header-height;
@@ -176,7 +172,7 @@ $breakpoint-lg: 1024px;
     transition: background-color 0.2s ease;
 
     &:hover, &--active {
-      background-color: #f1f5f9; // Um cinza suave
+      background-color: #f1f5f9; 
     }
   }
   
@@ -223,10 +219,9 @@ $breakpoint-lg: 1024px;
   }
 }
 
-// --- Bloco: Área de Conteúdo ---
 .app-content {
   flex: 1 1 0%;
-  overflow: hidden; // Previne que o conteúdo cause scroll no layout principal
+  overflow: hidden; 
   
   &__scroll-area {
     height: 100%;

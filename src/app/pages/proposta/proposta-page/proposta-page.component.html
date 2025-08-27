@@ -1,0 +1,12 @@
+<app-resource-table
+  title="Orçamentos"
+  subtitle="Gerencie os orçamentos"
+  buttonText="Novo Orçamento"
+  searchPlaceholder="Buscar por proposta ou razão social..."
+  [columns]="columns"
+  [data]="(propostas$ | async) || []"
+  [actions]="actions"
+  (buttonClick)="handleNewProposta()"
+  (searchChange)="handleSearch($event)"
+  (actionClick)="handleAction($event)">
+</app-resource-table>

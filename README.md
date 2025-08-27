@@ -5,14 +5,16 @@ Uma aplicação moderna e responsiva de CRM (Customer Relationship Management) c
 ## ✨ Principais Funcionalidades (Features)
 
 * **Autenticação Segura:** Sistema de login completo com suporte para credenciais (usuário/senha) e login social através do **Google Sign-In**.
-* **Arquitetura Standalone:** Utiliza a arquitetura de componentes standalone do Angular para um código mais modular e explícito.
-* **Estrutura de Projeto Profissional:** Organização de pastas e módulos seguindo as melhores práticas do mercado (`core`, `shared`, `pages`, `layout`).
-* **Gestão de Estado Reativa:** O estado do usuário é gerenciado de forma reativa com RxJS (`BehaviorSubject`), garantindo que a UI responda instantaneamente às mudanças de autenticação.
-* **Estilização com SCSS e BEM:** A interface foi construída sem frameworks de UI como Tailwind, utilizando SCSS puro com a metodologia BEM para um CSS encapsulado e escalável.
-* **Roteamento e Guards:** Navegação protegida utilizando Route Guards para garantir que apenas usuários autenticados acessem as áreas restritas.
 * **Arquitetura de Roteamento Robusta:**
     * **Route Guards** para proteger rotas (`authGuard`) e gerenciar o fluxo de login (`loginGuard`).
     * Redirecionamento automático após login/logout.
+* **Layout Principal Responsivo (Application Shell):** Uma estrutura de layout principal com header fixo, sidebar de navegação retrátil para dispositivos móveis e uma área de conteúdo principal para renderizar as páginas da aplicação.
+* **Módulo de Gerenciamento de Propostas (CRUD):**
+    * Página para listar, buscar e gerenciar propostas.
+    * Implementa um fluxo completo de CRUD (Create, Read, Update, Delete) através da interação com um componente de tabela genérico.
+* **Gestão de Estado Reativa:** O estado do usuário é gerenciado de forma reativa com RxJS (`BehaviorSubject`), garantindo que a UI responda instantaneamente às mudanças de autenticação.
+* **Estilização com SCSS e BEM:** A interface foi construída sem frameworks de UI como Tailwind, utilizando SCSS puro com a metodologia BEM para um CSS encapsulado e escalável.
+
 
 ## 🏛️ Decisões de Arquitetura
 
@@ -22,6 +24,7 @@ Este projeto foi construído com foco em padrões de design modernos para criar 
 * **Estilização com SCSS + BEM:** Todo o CSS foi escrito do zero utilizando SCSS e a metodologia **BEM (Block, Element, Modifier)**. Essa abordagem garante um CSS encapsulado, sem conflitos e auto-documentado, sem a dependência de frameworks de UI como o Tailwind.
 * **Serviços Centralizados:** A lógica de negócio e as chamadas de API são abstraídas em serviços injetáveis na camada `core`, mantendo os componentes "magros" e focados apenas na lógica de apresentação.
 * **Componentes Smart vs. Dumb:** A estrutura dos componentes segue o padrão "Smart/Container" (nas páginas) e "Dumb/Presentation" (em `shared`), onde componentes reutilizáveis recebem dados via `@Input` e emitem eventos via `@Output`, aumentando a reutilização e facilitando os testes.
+    * **Exemplo Prático:** A página `PropostaPageComponent` (Smart) é responsável por buscar os dados de propostas e definir a configuração das colunas. Ela então passa esses dados para o `ResourceTableComponent` (Dumb), que apenas se preocupa em renderizar a tabela e emitir eventos de ação, sem conhecer a lógica de negócio.
 ---
 ## 🛠️ Tech Stack
 
@@ -42,7 +45,7 @@ Este projeto foi construído com foco em padrões de design modernos para criar 
     * [npm](https://www.npmjs.com/)
 
 ---
-## 🚀 Rodando o Projeto Localment
+## 🚀 Rodando o Projeto Localmente
 
 Siga os passos abaixo para configurar e executar o ambiente de desenvolvimento.
 
@@ -54,5 +57,5 @@ Siga os passos abaixo para configurar e executar o ambiente de desenvolvimento.
 
 ### 1. Clone o Repositório
 ```bash
-git clone https://github.com/adriannparanhos/CRM-Demo.git
+git clone [https://github.com/adriannparanhos/CRM-Demo.git](https://github.com/adriannparanhos/CRM-Demo.git)
 cd crm-demo

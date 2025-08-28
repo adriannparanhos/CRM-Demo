@@ -6,6 +6,7 @@ import { ClientePageComponent } from './pages/cliente/cliente-page/cliente-page.
 import { loginGuard } from './core/guards/login.guard';
 import { authGuard } from './core/guards/auth.guard';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
+import { ProdutoPageComponent } from './pages/produto/produto-page/produto-page.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginPageComponent, canActivate: [loginGuard] },
@@ -14,6 +15,7 @@ export const routes: Routes = [
       { path: 'homepage', component: HomePageComponent },
       { path: 'propostas', component: PropostaPageComponent },
       { path: 'clientes', component: ClientePageComponent },
+      { path: 'produtos', component: ProdutoPageComponent },
 
       { path: '', redirectTo: 'homepage', pathMatch: 'full' } 
     ]

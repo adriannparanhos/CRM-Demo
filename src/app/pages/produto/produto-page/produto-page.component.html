@@ -1,0 +1,12 @@
+<app-resource-table
+  title="Produtos"
+  subtitle="Gerenciamento de Produtos"
+  buttonText="Novo Produto"
+  searchPlaceholder="Buscar por nome de produto..."
+  [columns]="columns"
+  [data]="(produto$ | async) || []"
+  [actions]="actions"
+  (buttonClick)="handleNewProduto()"
+  (searchChange)="handleSearch($event)"
+  (actionClick)="handleAction($event)">
+</app-resource-table>

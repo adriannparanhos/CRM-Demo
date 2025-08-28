@@ -12,6 +12,15 @@ Uma aplicação moderna e responsiva de CRM (Customer Relationship Management) c
 * **Módulo de Gerenciamento de Propostas (CRUD):**
     * Página para listar, buscar e gerenciar propostas.
     * Implementa um fluxo completo de CRUD (Create, Read, Update, Delete) através da interação com um componente de tabela genérico.
+* **Módulo de Gestão de Clientes (CRUD) - NOVO:**  
+    * Página `ClientePageComponent` com tabela responsiva para listar clientes, buscar por CNPJ ou Razão Social, e ações de **editar** e **excluir**.  
+    * Componente `ResourceTableComponent` reutilizável que emite eventos de ação e busca, permitindo um fluxo limpo e desacoplado.  
+    * SCSS aprimorado garantindo responsividade e visual moderno da tabela.
+* **Módulo de Gestão de Produtos (CRUD) - NOVO:**  
+    * Página `ProdutoPageComponent` com tabela responsiva mostrando **nome, NCM, alíquota, preço, quantidade e categoria**.  
+    * Busca por nome de produto e ações de **editar** e **excluir**.  
+    * Reutiliza o mesmo componente genérico `ResourceTableComponent`, mantendo consistência visual e comportamento padronizado.  
+    * SCSS aprimorado para garantir responsividade e interface moderna.
 * **Gestão de Estado Reativa:** O estado do usuário é gerenciado de forma reativa com RxJS (`BehaviorSubject`), garantindo que a UI responda instantaneamente às mudanças de autenticação.
 * **Estilização com SCSS e BEM:** A interface foi construída sem frameworks de UI como Tailwind, utilizando SCSS puro com a metodologia BEM para um CSS encapsulado e escalável.
 

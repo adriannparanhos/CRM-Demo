@@ -1,0 +1,12 @@
+<app-resource-table
+    title="Clientes"
+    subtitle="Gerencie os clientes"
+    buttonText="Novo Cliente"
+    searchPlaceholder="Buscar por CNPJ ou Razão Social"
+    [columns]="columns"
+    [data]="(cliente$ | async) || []"
+    [actions]="actions"
+    (buttonClick)="handleNewCliente()"
+    (searchChange)="handleSearch($event)"
+    (actionClick)="handleAction($event)">
+</app-resource-table>

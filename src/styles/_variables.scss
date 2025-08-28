@@ -8,6 +8,19 @@ $border-color: #dee2e6;
 $error-color: #dc3545;
 $error-background: #f8d7da;
 $icon-color: #20c997;
+$border-color: #e2e8f0;
+$view-icon-color: #20c997;
+$edit-icon-color: #ffc107;
+$delete-icon-color: #dc3545;
+
+$status-aprovado-bg: #dcfce7; 
+$status-aprovado-text: #166534; 
+
+$status-pendente-bg: #fef9c3; 
+$status-pendente-text: #854d0e; 
+
+$status-rejeitado-bg: #fee2e2; 
+$status-rejeitado-text: #991b1b; 
 
 
 $font-family-sans: 'Inter', sans-serif;
@@ -20,5 +33,4 @@ $container-max-width: 1280px;
 $breakpoint-md: 768px;
 
 $border-radius: 6px;
-$border-color: #e2e8f0;
 $box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);

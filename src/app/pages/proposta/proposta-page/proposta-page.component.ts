@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Proposta } from '../models/Proposta';
 import { ColumnDef } from '../../../shared/components/resource-table/models/ColumnDef';
@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './proposta-page.component.html',
   styleUrl: './proposta-page.component.scss'
 })
-export class PropostaPageComponent implements OnInit {
+export class PropostaPageComponent implements OnInit, OnDestroy {
   propostas$: Observable<Proposta[]> = of([]);
 
   columns: ColumnDef[] = [
@@ -26,9 +26,9 @@ export class PropostaPageComponent implements OnInit {
   ];
 
   actions: ActionDef[] = [
-    { id: 'view', icon: 'eye', label: 'Visualizar', colorClass: 'text-blue-500' },
-    { id: 'edit', icon: 'pencil', label: 'Editar', colorClass: 'bg-yellow-500' },
-    { id: 'delete', icon: 'trash', label: 'Excluir', colorClass: 'bg-red-500' },
+    { id: 'view', icon: 'eye', label: 'Visualizar', colorClass: 'view-icon' },
+    { id: 'edit', icon: 'pencil', label: 'Editar', colorClass: 'edit-icon' },
+    { id: 'delete', icon: 'trash', label: 'Excluir', colorClass: 'delete-icon' },
   ];
 
   constructor(
@@ -39,6 +39,10 @@ export class PropostaPageComponent implements OnInit {
   
   ngOnInit(): void {
     this.propostas$ = this.propostaService.getAll();
+  }
+
+  ngOnDestroy(): void {
+    this.propostas$ = of([]);
   }
 
   handleSearch(query: string) {

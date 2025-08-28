@@ -29,13 +29,13 @@
             <ng-container [ngSwitch]="col.type">
               <span *ngSwitchCase="'currency'">{{ getProperty(item, col.key) | currency:'BRL' }}</span>
               <span *ngSwitchCase="'date'">{{ getProperty(item, col.key) | date:'dd/MM/yyyy' }}</span>
-              <span *ngSwitchCase="'status'" class="status-pill">{{ getProperty(item, col.key) }}</span>
+              <span *ngSwitchCase="'status'" class="status-pill" [ngClass]="getStatusClass(getProperty(item, col.key))">{{ getProperty(item, col.key) }}</span>
               <span *ngSwitchDefault>{{ getProperty(item, col.key) }}</span>
             </ng-container>
           </td>
           <td *ngIf="actions.length > 0" class="actions-cell">
             <button *ngFor="let action of actions" [title]="action.label" (click)="actionClick.emit({ actionId: action.id, item: item })">
-                <i-lucide [name]="action.icon" [class]="action.colorClass"></i-lucide>
+                <i-lucide [name]="action.icon" [ngClass]="action.colorClass"></i-lucide>
             </button>
           </td>
         </tr>

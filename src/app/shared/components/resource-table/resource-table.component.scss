@@ -71,6 +71,92 @@ $font-h1-size: 24px;
     &__table-wrapper {
         flex: 1;
         overflow: auto;
+        margin-top: 1rem;
         border: 1px solid $border-color;
+        border-radius: $border-radius;
+        background-color: $card-background;
+    }
+
+    &__table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    &__table thead {
+        background-color: $primary-color;
+        color: $text-primary;
+        font-family: $font-family-sans;
+        font-size: $base-font-size;
+        font-weight: $font-weight-bold;
+    }
+
+    &__table th,
+    &__table td {
+        padding: 0.5rem 1rem;
+        text-align: left;
+        border-bottom: 1px solid $border-color;
+        border-right: 1px solid $border-color;
+        color: $text-primary;
+    }
+
+    &__table th:last-child,
+    &__table td:last-child {
+        border-right: none;
+    }
+
+    &__table tbody tr:last-child td {
+        border-bottom: none;
     }
 }
+
+.actions-cell {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.actions-cell button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 4px;
+  cursor: pointer;
+}
+
+.view-icon {
+    color: $view-icon-color;
+}
+
+.edit-icon {
+    color: $edit-icon-color;
+}
+
+.delete-icon {
+    color: $delete-icon-color;    
+}
+
+.status-pill {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 9999px; 
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+
+  &__aprovado {
+    background-color: $status-aprovado-bg;
+    color: $status-aprovado-text;
+  }
+
+  &__pendente {
+    background-color: $status-pendente-bg;
+    color: $status-pendente-text;
+  }
+
+  &__rejeitado {
+    background-color: $status-rejeitado-bg;
+    color: $status-rejeitado-text;
+  }
+}
+
+

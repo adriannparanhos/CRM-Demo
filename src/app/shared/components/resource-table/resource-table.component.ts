@@ -6,6 +6,7 @@ import { ActionDef } from './models/ActionDef';
 
 @Component({
   selector: 'app-resource-table',
+  standalone: true,
   imports: [LucideAngularModule, CommonModule],
   templateUrl: './resource-table.component.html',
   styleUrl: './resource-table.component.scss'
@@ -35,4 +36,25 @@ export class ResourceTableComponent<T> {
       this.searchChange.emit(input.value);
     }
   }
+
+  getStatusClass(status: string): string[] {
+    if (!status) return ['status-pill'];
+
+    switch (status.trim().toLowerCase()) {
+      case 'aprovado':
+        return ['status-pill', 'status-pill__aprovado'];
+      case 'pendente':
+        return ['status-pill', 'status-pill__pendente'];
+      case 'rejeitado':
+        return ['status-pill', 'status-pill__rejeitado'];
+      default:
+        return ['status-pill'];
+    }
+  }
+
+  getValue(item: T, field: keyof T): any {
+    return item[field];
+  }
+
+
 }

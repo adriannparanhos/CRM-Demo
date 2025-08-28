@@ -1,0 +1,41 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-layout">
+  
+  <div class="form-layout__grid">
+    
+    <!-- Itera sobre cada definição de campo fornecida via @Input -->
+    <div *ngFor="let field of fields" class="form-layout__group">
+      
+      <label [for]="field.key" class="form-layout__label">{{ field.label }}</label>
+      
+      <ng-container [ngSwitch]="field.type">
+        
+        <input *ngSwitchCase="'text'"
+               [type]="field.type"
+               [id]="field.key"
+               [formControlName]="field.key"
+               [placeholder]="field.placeholder || ''"
+               class="form-layout__input">
+        
+        <input *ngSwitchCase="'email'"
+               [type]="field.type"
+               [id]="field.key"
+               [formControlName]="field.key"
+               [placeholder]="field.placeholder || ''"
+               class="form-layout__input">
+        
+        <select *ngSwitchCase="'status'"
+                [id]="field.key"
+                [formControlName]="field.key"
+                class="form-layout__select">
+          <option value="Ativo">Ativo</option>
+          <option value="Inativo">Inativo</option>
+          <option value="Potencial">Potencial</option>
+        </select>
+      </ng-container>
+
+      <div *ngIf="form.get(field.key)?.invalid && form.get(field.key)?.touched" class="form-layout__error">
+        {{ field.label }} é um campo obrigatório.
+      </div>
+    </div>
+  </div>
+</form>

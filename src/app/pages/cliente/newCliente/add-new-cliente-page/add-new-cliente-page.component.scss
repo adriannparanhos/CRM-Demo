@@ -1,0 +1,38 @@
+@use '../../../../../styles/variables' as *;
+
+.client-form-page {
+
+    &__btn {
+        background-color: $primary-color;
+        color: $text-primary;
+        border: 1px solid $border-color;
+        border-radius: $border-radius;
+        cursor: pointer;
+        transition: background-color 0.2s ease, box-shadow 0.2s ease;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+
+        &:hover {
+            background-color: $primary-color-hover;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    &__btn--secondary {
+        background-color: $secondary-color;
+        color: $text-secondary;
+        border: 1px solid $border-color;
+        border-radius: $border-radius;
+        cursor: pointer;
+        transition: background-color 0.2s ease, box-shadow 0.2s ease;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+
+        &:hover {
+            background-color: $secondary-color-hover;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    
+}

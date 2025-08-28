@@ -1,0 +1,23 @@
+<div class="client-form-page">
+  <header class="client-form-page__header">
+    <div>
+      <h1 class="client-form-page__title">{{ isEditing ? 'Editar Cliente' : 'Adicionar Novo Cliente' }}</h1>
+      <p class="client-form-page__subtitle">Preencha os dados abaixo.</p>
+    </div>
+    <div class="client-form-page__actions">
+      <button type="button" (click)="cancel()" class="client-form-page__btn client-form-page__btn--secondary">Cancelar</button>
+      <button type="button" (click)="resourceForm.onSubmit()" [disabled]="resourceForm.form.invalid" class="client-form-page__btn client-form-page__btn--primary">
+        Salvar Cliente
+      </button>
+    </div>
+  </header>
+
+  <main class="client-form-page__card">
+    <app-resource-form 
+      #resourceForm
+      [fields]="formFields"
+      [initialData]="clienteData"
+      (formSubmit)="saveCliente($event)">
+    </app-resource-form>
+  </main>
+</div>

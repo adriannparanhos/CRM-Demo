@@ -3,4 +3,6 @@ export interface Cliente {
     razaoSocial: string;
     cnpjCpf: string;
     cidadeUf: string;
+    email: string;
+    telefone: string;
 }

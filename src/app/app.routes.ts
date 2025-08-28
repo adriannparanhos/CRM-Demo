@@ -7,6 +7,7 @@ import { loginGuard } from './core/guards/login.guard';
 import { authGuard } from './core/guards/auth.guard';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { ProdutoPageComponent } from './pages/produto/produto-page/produto-page.component';
+import { AddNewClientePageComponent } from './pages/cliente/newCliente/add-new-cliente-page/add-new-cliente-page.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginPageComponent, canActivate: [loginGuard] },
@@ -15,6 +16,7 @@ export const routes: Routes = [
       { path: 'homepage', component: HomePageComponent },
       { path: 'propostas', component: PropostaPageComponent },
       { path: 'clientes', component: ClientePageComponent },
+      { path: 'cliente/new', component: AddNewClientePageComponent },
       { path: 'produtos', component: ProdutoPageComponent },
 
       { path: '', redirectTo: 'homepage', pathMatch: 'full' } 

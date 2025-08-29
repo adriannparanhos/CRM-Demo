@@ -28,6 +28,11 @@ Uma aplicação moderna e responsiva de CRM (Customer Relationship Management) c
     * Busca por nome de produto e ações de **editar** e **excluir**.  
     * Reutiliza o mesmo componente genérico `ResourceTableComponent`, mantendo consistência visual e comportamento padronizado.  
     * SCSS aprimorado para garantir responsividade e interface moderna.
+    * **Páginas Específicas do Módulo de Produtos:**
+        * **`produto-page`**: Tela principal de listagem e gerenciamento de produtos. Exibe uma tabela responsiva com busca por nome do produto e ações de editar/excluir. Utiliza o `ResourceTableComponent` para renderização da tabela.
+        * **`add-new-produto-page`**: Página de formulário para criação e edição de produtos. Componente dinâmico que se adapta entre os modos "Adicionar Novo Produto" e "Editar Produto" baseado na rota. Utiliza o `ResourceFormComponent` para renderização do formulário.
+    * **Serviços Específicos do Módulo de Produtos:**
+        * **`ProdutoMetadataService`**: Serviço que centraliza a definição dos campos e validações para o modelo Produto, incluindo campos como nome, NCM, alíquota, preço, quantidade e categoria. Garante consistência entre tabelas e formulários.
 * **Gestão de Estado Reativa:** O estado do usuário é gerenciado de forma reativa com RxJS (`BehaviorSubject`), garantindo que a UI responda instantaneamente às mudanças de autenticação.
 * **Estilização com SCSS e BEM:** A interface foi construída sem frameworks de UI como Tailwind, utilizando SCSS puro com a metodologia BEM para um CSS encapsulado e escalável.
 

@@ -50,7 +50,7 @@ export class PropostaPageComponent implements OnInit, OnDestroy {
   }
 
   handleNewProposta() {
-    this.router.navigate(['/propostas/novo']);
+    this.router.navigate(['/proposta/new']);
   }
 
   handleAction(event: { actionId: string, item: Proposta }) {

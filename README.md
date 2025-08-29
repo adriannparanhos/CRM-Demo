@@ -5,6 +5,10 @@ Uma aplicação moderna e responsiva de CRM (Customer Relationship Management) c
 ## ✨ Principais Funcionalidades (Features)
 
 * **Autenticação Segura:** Sistema de login completo com suporte para credenciais (usuário/senha) e login social através do **Google Sign-In**.
+    * **Credenciais Padrão para Demo:** Para facilitar o acesso e demonstração, o sistema inclui credenciais padrão:
+        * **Usuário:** `admin@demo.com`
+        * **Senha:** `123456`
+    * Interface de login com seção informativa exibindo as credenciais de demonstração de forma destacada.
 * **Arquitetura de Roteamento Robusta:**
     * **Route Guards** para proteger rotas (`authGuard`) e gerenciar o fluxo de login (`loginGuard`).
     * Redirecionamento automático após login/logout.
@@ -23,16 +27,23 @@ Uma aplicação moderna e responsiva de CRM (Customer Relationship Management) c
         * **`ResourceTableComponent`**: Componente genérico de tabela que aceita configurações de colunas e ações via `@Input` e emite eventos de busca e ação via `@Output`. Garante consistência visual e comportamental em todas as listagens.
         * **`ResourceFormComponent`**: Componente genérico de formulário que gera campos dinamicamente baseado em metadados. Suporta validação reativa e emite eventos de submissão.
         * **`ClienteMetadataService`**: Serviço que centraliza a definição dos campos e validações para o modelo Cliente, garantindo consistência entre tabelas e formulários.
-* **Módulo de Gestão de Produtos (CRUD) - NOVO:**  
+* **Módulo de Gestão de Produtos (CRUD) - COMPLETO:**  
     * Página `ProdutoPageComponent` com tabela responsiva mostrando **nome, NCM, alíquota, preço, quantidade e categoria**.  
     * Busca por nome de produto e ações de **editar** e **excluir**.  
     * Reutiliza o mesmo componente genérico `ResourceTableComponent`, mantendo consistência visual e comportamento padronizado.  
     * SCSS aprimorado para garantir responsividade e interface moderna.
     * **Páginas Específicas do Módulo de Produtos:**
         * **`produto-page`**: Tela principal de listagem e gerenciamento de produtos. Exibe uma tabela responsiva com busca por nome do produto e ações de editar/excluir. Utiliza o `ResourceTableComponent` para renderização da tabela.
-        * **`add-new-produto-page`**: Página de formulário para criação e edição de produtos. Componente dinâmico que se adapta entre os modos "Adicionar Novo Produto" e "Editar Produto" baseado na rota. Utiliza o `ResourceFormComponent` para renderização do formulário.
+        * **`add-new-produto-page`**: **[IMPLEMENTADO]** Página de formulário completamente funcional para criação e edição de produtos. Componente dinâmico que se adapta entre os modos "Add New Product" e "Edit Product" baseado na rota. Utiliza o `ResourceFormComponent` para renderização do formulário com navegação completa e validação de dados.
+    * **Funcionalidades da Página de Produtos:**
+        * **Título Dinâmico:** Alterna automaticamente entre "Add New Product" e "Edit Product" baseado no contexto.
+        * **Botões de Ação:** Cancel e Save Product com navegação funcional de volta para a listagem.
+        * **Integração Completa:** Utiliza `ResourceFormComponent` para consistência com outras páginas do sistema.
+        * **Design Responsivo:** Estilos SCSS seguindo o padrão visual estabelecido no projeto.
+        * **Estrutura CRUD:** Preparada para operações completas de criar e editar produtos.
     * **Serviços Específicos do Módulo de Produtos:**
         * **`ProdutoMetadataService`**: Serviço que centraliza a definição dos campos e validações para o modelo Produto, incluindo campos como nome, NCM, alíquota, preço, quantidade e categoria. Garante consistência entre tabelas e formulários.
+        * **`ProdutoService`**: Serviço integrado para operações CRUD de produtos (estrutura preparada para integração com backend).
 * **Gestão de Estado Reativa:** O estado do usuário é gerenciado de forma reativa com RxJS (`BehaviorSubject`), garantindo que a UI responda instantaneamente às mudanças de autenticação.
 * **Estilização com SCSS e BEM:** A interface foi construída sem frameworks de UI como Tailwind, utilizando SCSS puro com a metodologia BEM para um CSS encapsulado e escalável.
 

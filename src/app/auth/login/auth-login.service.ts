@@ -48,6 +48,30 @@ export class AuthLoginService {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 
+  signInWithCredentials(email: string, password: string): boolean {
+    // Usuário e senha padrão para facilitar o acesso
+    const defaultEmail = 'admin@demo.com';
+    const defaultPassword = '123456';
+    
+    if (email === defaultEmail && password === defaultPassword) {
+      const user: User = {
+        id: 'demo-user-001',
+        name: 'Usuário Demo',
+        email: defaultEmail,
+        photoUrl: 'https://via.placeholder.com/150/0066cc/ffffff?text=Demo'
+      };
+
+      this.userState.next(user);
+      localStorage.setItem('user', JSON.stringify(user));
+
+      console.log('✅ Logado com credenciais padrão');
+      this.router.navigate(['/homepage']);
+      return true;
+    }
+    
+    return false;
+  }
+
   signOut(): void {
     this.socialAuthService.signOut().then(() => {
       this.userState.next(null);

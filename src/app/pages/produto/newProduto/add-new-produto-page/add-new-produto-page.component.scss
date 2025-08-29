@@ -1,0 +1,88 @@
+@use '../../../../../styles/variables' as *;
+
+.produto-form-page {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $border-color;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    color: $text-secondary;
+    margin: 0.5rem 0 0 0;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      justify-content: flex-end;
+    }
+  }
+
+  &__btn {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+
+    &:hover:not(:disabled) {
+      background-color: $primary-color-hover;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    &--secondary {
+      background-color: transparent;
+      color: $text-secondary;
+      border: 1px solid $border-color;
+
+      &:hover {
+        background-color: $secondary-color;
+        color: $text-primary;
+      }
+    }
+  }
+
+  &__card {
+    background-color: white;
+    border-radius: $border-radius;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+
+    @media (max-width: 768px) {
+      padding: 1rem;
+    }
+  }
+}

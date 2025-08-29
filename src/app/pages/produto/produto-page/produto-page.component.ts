@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Produto } from '../models/produto';
+import { Produto } from '../models/Produto';
 import { ColumnDef } from '../../../shared/components/resource-table/models/ColumnDef';
 import { ActionDef } from '../../../shared/components/resource-table/models/ActionDef';
 import { ProdutoService } from '../../../core/services/produto/produto.service';
@@ -46,7 +46,7 @@ export class ProdutoPageComponent implements OnInit, OnDestroy {
   }
 
   handleNewProduto() {
-    this.router.navigate(['/produto/novo']);
+    this.router.navigate(['/produto/new']);
   }
 
   handleAction(event: { actionId: string, item: Produto }) {

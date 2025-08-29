@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { ColumnDef } from '../../../../shared/components/resource-table/models/ColumnDef';
 import { Cliente } from '../../models/cliente';
 import { ClienteMetadataService } from '../../../../core/services/cliente/cliente-metadata.service';
 import { ActivatedRoute } from '@angular/router';
 import { ResourceFormComponent } from '../../../../shared/components/resource-form/resource-form.component';
+import { FormDef } from '../../../../shared/components/resource-form/models/FormDef';
 
 @Component({
   selector: 'app-add-new-cliente-page',
@@ -14,7 +14,7 @@ import { ResourceFormComponent } from '../../../../shared/components/resource-fo
   styleUrls: ['./add-new-cliente-page.component.scss']
 })
 export class AddNewClientePageComponent implements OnInit {
-  formFields: ColumnDef[];
+  formFields: FormDef[];
   clienteData: Cliente | null = null;
   isEditing: boolean = false;
 

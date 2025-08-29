@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginButtonComponent } from '../../../shared/components/login-button/login-button.component';
+import { AuthLoginService } from '../../../auth/login/auth-login.service';
 
 @Component({
   selector: 'app-login-page',
@@ -22,7 +23,8 @@ export class LoginPageComponent implements OnInit {
   errorMessage: string | null = null;
 
   constructor(
-    private fb: FormBuilder) {}
+    private fb: FormBuilder,
+    private authService: AuthLoginService) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -36,8 +38,15 @@ export class LoginPageComponent implements OnInit {
       this.errorMessage = 'Por favor, preencha os campos corretamente.';
       return;
     }
-    this.errorMessage = null;
-    console.log('Dados do formulário:', this.loginForm.value);
+    
+    const { login, password } = this.loginForm.value;
+    const loginSuccess = this.authService.signInWithCredentials(login, password);
+    
+    if (!loginSuccess) {
+      this.errorMessage = 'Credenciais inválidas. Use: admin@demo.com / 123456';
+    } else {
+      this.errorMessage = null;
+    }
   }
 
 }

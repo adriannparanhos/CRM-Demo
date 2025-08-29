@@ -8,6 +8,8 @@ import { authGuard } from './core/guards/auth.guard';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { ProdutoPageComponent } from './pages/produto/produto-page/produto-page.component';
 import { AddNewClientePageComponent } from './pages/cliente/newCliente/add-new-cliente-page/add-new-cliente-page.component';
+import { AddNewPropostaPageComponent } from './pages/proposta/newProposta/add-new-proposta-page/add-new-proposta-page.component';
+import { AddNewProdutoPageComponent } from './pages/produto/newProduto/add-new-produto-page/add-new-produto-page.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginPageComponent, canActivate: [loginGuard] },
@@ -15,9 +17,11 @@ export const routes: Routes = [
     children: [
       { path: 'homepage', component: HomePageComponent },
       { path: 'propostas', component: PropostaPageComponent },
+      { path: 'proposta/new', component: AddNewPropostaPageComponent },
       { path: 'clientes', component: ClientePageComponent },
       { path: 'cliente/new', component: AddNewClientePageComponent },
       { path: 'produtos', component: ProdutoPageComponent },
+      { path: 'produto/new', component: AddNewProdutoPageComponent },
 
       { path: '', redirectTo: 'homepage', pathMatch: 'full' } 
     ]

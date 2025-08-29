@@ -1,0 +1,23 @@
+<div class="produto-form-page">
+  <header class="produto-form-page__header">
+    <div>
+      <h1 class="produto-form-page__title">{{ isEditing ? 'Editar Produto' : 'Adicionar Novo Produto' }}</h1>
+      <p class="produto-form-page__subtitle">Preencha os dados abaixo.</p>
+    </div>
+    <div class="produto-form-page__actions">
+      <button type="button" (click)="cancel()" class="produto-form-page__btn produto-form-page__btn--secondary">Cancelar</button>
+      <button type="button" (click)="resourceForm.onSubmit()" [disabled]="resourceForm.form.invalid" class="produto-form-page__btn produto-form-page__btn--primary">
+        Salvar Produto
+      </button>
+    </div>
+  </header>
+
+  <main class="produto-form-page__card">
+    <app-resource-form 
+      #resourceForm
+      [fields]="formFields"
+      [initialData]="produtoData"
+      (formSubmit)="saveProduto($event)">
+    </app-resource-form>
+  </main>
+</div>

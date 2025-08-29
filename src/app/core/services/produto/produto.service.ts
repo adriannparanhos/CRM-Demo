@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Produto } from '../../../pages/produto/models/produto';
+import { Produto } from '../../../pages/produto/models/Produto';
 import { Observable, of, delay } from 'rxjs';
 
 const MOCK_PRODUTOS: Produto[] = [

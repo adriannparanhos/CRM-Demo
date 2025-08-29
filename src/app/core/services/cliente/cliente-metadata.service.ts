@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FormDef } from '../../../shared/components/resource-form/models/formDef';
+import { FormDef } from '../../../shared/components/resource-form/models/FormDef';
 
 @Injectable({
   providedIn: 'root'

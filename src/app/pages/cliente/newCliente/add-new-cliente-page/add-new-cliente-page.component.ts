@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ColumnDef } from '../../../../shared/components/resource-table/models/ColumnDef';
 import { Cliente } from '../../models/cliente';
@@ -13,7 +13,7 @@ import { ResourceFormComponent } from '../../../../shared/components/resource-fo
   templateUrl: './add-new-cliente-page.component.html',
   styleUrls: ['./add-new-cliente-page.component.scss']
 })
-export class AddNewClientePageComponent {
+export class AddNewClientePageComponent implements OnInit {
   formFields: ColumnDef[];
   clienteData: Cliente | null = null;
   isEditing: boolean = false;

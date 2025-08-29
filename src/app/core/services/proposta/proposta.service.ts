@@ -27,6 +27,10 @@ export class PropostaService {
   //   return this.http.get<Proposta[]>('http://localhost:3000/propostas');
   // }
 
+  getPropostaById(id: number): Proposta | null {
+    return MOCK_PROPOSTAS.find(proposta => proposta.id === id) || null;
+  }
+
   search(query: string): Observable<Proposta[]> {
     return this.http.get<Proposta[]>(`http://localhost:3000/propostas?razaoSocial=${query}`);
   }

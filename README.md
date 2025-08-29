@@ -16,6 +16,13 @@ Uma aplicação moderna e responsiva de CRM (Customer Relationship Management) c
     * Página `ClientePageComponent` com tabela responsiva para listar clientes, buscar por CNPJ ou Razão Social, e ações de **editar** e **excluir**.  
     * Componente `ResourceTableComponent` reutilizável que emite eventos de ação e busca, permitindo um fluxo limpo e desacoplado.  
     * SCSS aprimorado garantindo responsividade e visual moderno da tabela.
+    * **Páginas Específicas do Módulo de Clientes:**
+        * **`cliente-page`**: Tela principal de listagem e gerenciamento de clientes. Exibe uma tabela responsiva com busca por CNPJ/Razão Social e ações de editar/excluir. Utiliza o `ResourceTableComponent` para renderização da tabela.
+        * **`add-new-cliente-page`**: Página de formulário para criação e edição de clientes. Componente dinâmico que se adapta entre os modos "Adicionar Novo Cliente" e "Editar Cliente" baseado na rota. Utiliza o `ResourceFormComponent` para renderização do formulário.
+    * **Componentes Reutilizáveis Criados:**
+        * **`ResourceTableComponent`**: Componente genérico de tabela que aceita configurações de colunas e ações via `@Input` e emite eventos de busca e ação via `@Output`. Garante consistência visual e comportamental em todas as listagens.
+        * **`ResourceFormComponent`**: Componente genérico de formulário que gera campos dinamicamente baseado em metadados. Suporta validação reativa e emite eventos de submissão.
+        * **`ClienteMetadataService`**: Serviço que centraliza a definição dos campos e validações para o modelo Cliente, garantindo consistência entre tabelas e formulários.
 * **Módulo de Gestão de Produtos (CRUD) - NOVO:**  
     * Página `ProdutoPageComponent` com tabela responsiva mostrando **nome, NCM, alíquota, preço, quantidade e categoria**.  
     * Busca por nome de produto e ações de **editar** e **excluir**.  

@@ -1,0 +1,23 @@
+<div class="proposta-form-page">
+    <header class="proposta-form-page__header">
+        <div>
+            <h1 class="proposta-form-page__title">{{ isEditing ? 'Editar Proposta' : 'Adicionar Nova Proposta' }}</h1>
+            <p class="proposta-form-page__subtitle">Preencha os dados abaixo.</p>
+        </div>
+        <div class="proposta-form-page__actions">
+            <button type="button" (click)="cancel()" class="proposta-form-page__btn proposta-form-page__btn--secondary">Cancelar</button>
+            <button type="button" (click)="resourceForm.onSubmit()" [disabled]="resourceForm.form.invalid" class="proposta-form-page__btn proposta-form-page__btn--primary">
+                Salvar Proposta
+            </button>
+        </div>
+    </header>
+
+    <main class="proposta-form-page__card">
+        <app-resource-form 
+            #resourceForm
+            [fields]="formDefs"
+            [initialData]="propostaData"
+            (formSubmit)="saveProposta($event)">
+        </app-resource-form>
+    </main>
+</div>

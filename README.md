@@ -91,3 +91,25 @@ Siga os passos abaixo para configurar e executar o ambiente de desenvolvimento.
 ```bash
 git clone [https://github.com/adriannparanhos/CRM-Demo.git](https://github.com/adriannparanhos/CRM-Demo.git)
 cd crm-demo
+```
+
+---
+## 🆕 Novidades Recentes (Módulo de Propostas)
+
+- Página “Adicionar Nova Proposta” reorganizada em 3 seções verticais:
+  1) Informações da Proposta
+  2) Itens do Orçamento (apenas formulário para adicionar itens)
+  3) Itens Selecionados (lista dos itens + resumo do orçamento)
+- Novos campos no formulário da proposta (com validações): Nome do Contato, Telefone, Email, Endereço, Cidade, CEP. Definidos centralmente em PropostaMetadataService, garantindo consistência de rótulos, placeholders e regras de validação.
+
+## ⚙️ Guia Rápido: Nova Proposta + Itens do Orçamento
+
+1) Abra a página “Adicionar Nova Proposta”.
+2) Preencha os dados de “Informações da Proposta”, incluindo os novos campos de contato e endereço.
+3) Na seção “Itens do Orçamento”, selecione a categoria e o produto, ajuste quantidade e desconto (se necessário) e clique em “Adicionar”.
+4) Na seção “Itens Selecionados”, confira os itens adicionados, edite quantidades/valores se preciso e verifique o resumo (subtotal, descontos, total).
+5) Clique em “Salvar Proposta”.
+
+Notas de uso do componente de itens (reutilização):
+- Para exibir somente o formulário de adicionar itens na página: utilizar o componente com [showOnlyForm]="true".
+- Para exibir somente a lista e o resumo: utilizar o componente com [showOnlyItems]="true".

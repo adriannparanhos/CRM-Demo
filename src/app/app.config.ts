@@ -5,7 +5,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { routes } from './app.routes';
 import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { LucideAngularModule, LUCIDE_ICONS, LucideIconProvider } from 'lucide-angular';
-import { LucideAngularComponent, Menu, Newspaper, FileBox, Users, LayoutDashboard, FileText, Package, LogOut, Search, Eye, Pencil, Trash } from 'lucide-angular';
+import { LucideAngularComponent, Menu, Newspaper, FileBox, Users, LayoutDashboard, FileText, Package, LogOut, Search, Eye, Pencil, Trash, Trash2, Plus } from 'lucide-angular';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,7 +13,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(), 
     importProvidersFrom(LucideAngularComponent),
     importProvidersFrom(LucideAngularModule),
-    { provide: LUCIDE_ICONS, multi: true, useValue: new LucideIconProvider({ Menu, Newspaper, FileBox, Users, LayoutDashboard, FileText, Package, LogOut, Search, Eye, Pencil, Trash }) },
+    { provide: LUCIDE_ICONS, multi: true, useValue: new LucideIconProvider({ Menu, Newspaper, FileBox, Users, LayoutDashboard, FileText, Package, LogOut, Search, Eye, Pencil, Trash, Trash2, Plus }) },
     importProvidersFrom(SocialLoginModule),
     {
       provide: 'SocialAuthServiceConfig',

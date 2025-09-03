@@ -1,0 +1,186 @@
+<div class="budget-items">
+  <!-- Cabeçalho - apenas quando não está separado -->
+  <div class="budget-items__header" *ngIf="!showOnlyForm && !showOnlyItems">
+    <h2 class="budget-items__title">
+      <lucide-icon name="shopping-cart"></lucide-icon>
+      Itens do Orçamento
+    </h2>
+  </div>
+
+  <!-- Formulário para adicionar itens -->
+  <div *ngIf="!showOnlyItems">
+  <div class="add-item-form">
+      <div class="form-row">
+        <div class="form-group form-group--categoria">
+          <label for="categoria">Categoria</label>
+          <select 
+            id="categoria" 
+            class="form-select" 
+            [(ngModel)]="categoriaSelecionada" 
+            (change)="onCategoriaSelecionada()"
+          >
+            <option [ngValue]="''">Selecione uma categoria</option>
+            <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
+          </select>
+        </div>
+        
+        <div class="form-group form-group--produto">
+          <label for="produto">Produto</label>
+          <select 
+            id="produto" 
+            class="form-select" 
+            [(ngModel)]="produtoSelecionado" 
+            (change)="onProdutoSelecionado()"
+            [disabled]="!categoriaSelecionada"
+          >
+            <option [ngValue]="null">Selecione um produto</option>
+            <option *ngFor="let produto of produtosFiltrados" [ngValue]="produto">{{ produto.nome }} - {{ formatarMoeda(produto.preco) }}</option>
+          </select>
+        </div>
+        
+        <div class="form-group form-group--quantidade">
+          <label for="quantidade">Qtd</label>
+          <input 
+            id="quantidade" 
+            type="number" 
+            class="form-input" 
+            [(ngModel)]="quantidade" 
+            min="1" 
+            [disabled]="!produtoSelecionado"
+          >
+        </div>
+        
+        <div class="form-group form-group--desconto">
+          <label for="desconto">Desc. (%)</label>
+          <input 
+            id="desconto" 
+            type="number" 
+            class="form-input" 
+            [(ngModel)]="desconto" 
+            min="0" 
+            max="100" 
+            step="1"
+            [disabled]="!produtoSelecionado"
+          >
+        </div>
+        
+        <div class="form-group form-group--observacoes">
+          <label for="observacoes">Observações</label>
+          <input 
+            id="observacoes" 
+            type="text" 
+            class="form-input" 
+            [(ngModel)]="observacoes" 
+            placeholder="Observações opcionais"
+            [disabled]="!produtoSelecionado"
+          >
+        </div>
+        
+        <div class="form-group form-group--button">
+          <label>&nbsp;</label>
+          <button 
+            type="button" 
+            class="btn btn--primary" 
+            (click)="adicionarItem()" 
+            [disabled]="!produtoSelecionado || quantidade <= 0"
+          >
+            <lucide-icon name="plus"></lucide-icon>
+            Adicionar
+          </button>
+        </div>
+      </div>
+  </div>
+
+  <!-- Lista de itens adicionados -->
+  <div class="selected-items" *ngIf="itensOrcamento.length > 0">
+    <h3 class="selected-items__title">Itens Selecionados</h3>
+    
+    <table class="items-table">
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Categoria</th>
+          <th>Qtd</th>
+          <th>Valor Unit.</th>
+          <th>Desc. (%)</th>
+          <th>Total</th>
+          <th>Observações</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of itensOrcamento">
+          <td class="produto-nome">{{ item.produto.nome }}</td>
+          <td class="produto-categoria">{{ item.produto.categoria }}</td>
+          <td>
+            <input 
+              type="number" 
+              class="quantity-input" 
+              [value]="item.quantidade" 
+              (change)="atualizarQuantidade(item.id, +$any($event.target).value)"
+              min="1"
+            >
+          </td>
+          <td class="valor">{{ formatarMoeda(item.valorUnitario) }}</td>
+          <td>
+            <input 
+              type="number" 
+              class="discount-input" 
+              [value]="item.desconto" 
+              (change)="atualizarDesconto(item.id, +$any($event.target).value)"
+              min="0"
+              max="100"
+              step="0.01"
+            >
+          </td>
+          <td class="valor"><strong>{{ formatarMoeda(item.valorTotal) }}</strong></td>
+          <td>{{ item.observacoes || '-' }}</td>
+          <td class="actions">
+            <button 
+              type="button" 
+              class="btn btn--danger" 
+              (click)="removerItem(item.id)"
+              title="Remover item"
+            >
+              <lucide-icon name="trash-2"></lucide-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Resumo do orçamento -->
+  <div class="budget-summary" *ngIf="itensOrcamento.length > 0">
+    <table class="summary-table">
+      <tr>
+        <td class="label">Subtotal</td>
+        <td class="value subtotal">{{ formatarMoeda(resumoOrcamento.subtotal) }}</td>
+      </tr>
+      <tr>
+        <td class="label">Desconto Total</td>
+        <td class="value discount">{{ formatarMoeda(resumoOrcamento.descontoTotal) }}</td>
+      </tr>
+      <tr>
+        <td class="label">Total Geral</td>
+        <td class="value total">{{ formatarMoeda(resumoOrcamento.valorTotal) }}</td>
+      </tr>
+    </table>
+    
+    <div class="summary-actions">
+      <button type="button" class="btn btn--danger" (click)="limparOrcamento()">
+        <lucide-icon name="trash-2"></lucide-icon>
+        Limpar Orçamento
+      </button>
+    </div>
+  </div>
+
+  <!-- Estado vazio -->
+  <div class="empty-state" *ngIf="itensOrcamento.length === 0 && !showOnlyForm">
+    <lucide-icon name="shopping-cart" size="48"></lucide-icon>
+    <h3>Nenhum item adicionado</h3>
+    <p>Selecione uma categoria e produto para começar a montar seu orçamento.</p>
+  </div>
+  
+  </div>
+</div>

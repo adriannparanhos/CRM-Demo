@@ -1,0 +1,178 @@
+@use '../../../../../styles/variables' as *;
+
+$color-background: white;
+
+.proposta-form-page {
+  min-height: 100vh;
+  padding: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  &__header {
+    background: $color-background;
+    border: 1px solid $border-color;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    
+    .proposta-form-page__header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .proposta-form-page__title-section {
+      flex: 1;
+    }
+    
+    .proposta-form-page__title {
+      color: $text-primary;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0 0 0.25rem 0;
+    }
+    
+    .proposta-form-page__subtitle {
+      color: $text-secondary;
+      font-size: 0.875rem;
+      margin: 0;
+      font-weight: 400;
+    }
+    
+    .proposta-form-page__actions {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+  }
+
+  &__card {
+    background: $secondary-color;
+    border: 1px solid $border-color;
+    padding: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+    
+    &__header {
+      .proposta-form-page__header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      
+      .proposta-form-page__actions {
+        width: 100%;
+        justify-content: flex-end;
+      }
+    }
+    
+    &__card {
+      padding: 1rem;
+    }
+  }
+}
+
+// Estilos para as seções
+.proposta-form-page__section {
+  background: $color-background;
+  border: 1px solid $color-background;
+  margin-bottom: 1rem;
+  
+  &-header {
+    background: $color-background;
+    border-bottom: 1px solid $border-color;
+    margin: 0 0 0.25rem 0;
+  }
+  
+  &-title {
+    color: $text-primary;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+    padding: 1rem 1.5rem;
+  }
+  
+  &-subtitle {
+    color: $text-secondary;
+    font-size: 0.875rem;
+    margin: 0 0 0.25rem 0;
+    font-weight: 400;
+    padding: 1rem 1.5rem;
+  }
+  
+  &-content {
+    padding: 1.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    margin-bottom: 0.5rem;
+    
+    &-header {
+      padding: 1rem;
+    }
+    
+    &-content {
+      padding: 1rem;
+    }
+  }
+}
+
+// Estilos para os botões - estilo Excel/Office
+.proposta-form-page__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  border-radius: 2px;
+  border: 1px solid $border-color;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  min-width: 80px;
+  background: $primary-color;
+  
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: $button-disabled-color;
+  }
+  
+  &--primary {
+    background: $button-color;
+    color: $text-primary;
+    border-color: $border-color;
+    
+    &:hover:not(:disabled) {
+      background: $button-disable-hover-color;
+      border-color: $border-color;
+    }
+  }
+  
+  &--secondary {
+    background: $button-color;
+    color: $text-secondary;
+    border-color: $border-color;
+    
+    &:hover:not(:disabled) {
+      background: $button-disable-hover-color;
+      border-color: $border-color;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0.75rem 1rem;
+  }
+}

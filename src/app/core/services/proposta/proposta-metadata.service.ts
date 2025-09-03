@@ -24,6 +24,7 @@ export class PropostaMetadataService {
         type: 'text',
         isFormField: true,
         isTableColumn: true,
+        validators: [Validators.required]
       },
       {
         key: 'cliente',
@@ -31,20 +32,58 @@ export class PropostaMetadataService {
         type: 'text',
         isFormField: true,
         isTableColumn: true,
+        validators: [Validators.required]
       },
       {
-        key: 'data',
-        label: 'Data',
-        type: 'date',
+        key: 'nomeContato',
+        label: 'Nome do Contato',
+        type: 'text',
         isFormField: true,
-        isTableColumn: true,
+        isTableColumn: false,
+        validators: [Validators.required]
       },
       {
-        key: 'valor',
-        label: 'Valor',
-        type: 'currency',
+        key: 'telefone',
+        label: 'Telefone',
+        type: 'text',
         isFormField: true,
-        isTableColumn: true,
+        isTableColumn: false,
+        placeholder: '(11) 99999-9999',
+        validators: [Validators.required]
+      },
+      {
+        key: 'email',
+        label: 'E-mail',
+        type: 'email',
+        isFormField: true,
+        isTableColumn: false,
+        placeholder: 'contato@empresa.com',
+        validators: [Validators.required, Validators.email]
+      },
+      {
+        key: 'endereco',
+        label: 'Endereço',
+        type: 'text',
+        isFormField: true,
+        isTableColumn: false,
+        validators: [Validators.required]
+      },
+      {
+        key: 'cidade',
+        label: 'Cidade',
+        type: 'text',
+        isFormField: true,
+        isTableColumn: false,
+        validators: [Validators.required]
+      },
+      {
+        key: 'cep',
+        label: 'CEP',
+        type: 'text',
+        isFormField: true,
+        isTableColumn: false,
+        placeholder: '00000-000',
+        validators: [Validators.required]
       },
       {
         key: 'status',

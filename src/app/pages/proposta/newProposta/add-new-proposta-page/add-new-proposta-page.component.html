@@ -1,23 +1,56 @@
 <div class="proposta-form-page">
     <header class="proposta-form-page__header">
-        <div>
-            <h1 class="proposta-form-page__title">{{ isEditing ? 'Editar Proposta' : 'Adicionar Nova Proposta' }}</h1>
-            <p class="proposta-form-page__subtitle">Preencha os dados abaixo.</p>
-        </div>
-        <div class="proposta-form-page__actions">
-            <button type="button" (click)="cancel()" class="proposta-form-page__btn proposta-form-page__btn--secondary">Cancelar</button>
-            <button type="button" (click)="resourceForm.onSubmit()" [disabled]="resourceForm.form.invalid" class="proposta-form-page__btn proposta-form-page__btn--primary">
-                Salvar Proposta
-            </button>
+        <div class="proposta-form-page__header-content">
+            <div class="proposta-form-page__title-section">
+                <h1 class="proposta-form-page__title">{{ isEditing ? 'Editar Proposta' : 'Adicionar Nova Proposta' }}</h1>
+                <p class="proposta-form-page__subtitle">Preencha os dados abaixo e configure os itens do orçamento.</p>
+            </div>
+            <div class="proposta-form-page__actions">
+                <button type="button" (click)="cancel()" class="proposta-form-page__btn proposta-form-page__btn--secondary">
+                    Cancelar
+                </button>
+                <button type="button" (click)="resourceForm.onSubmit()" [disabled]="resourceForm.form.invalid" class="proposta-form-page__btn proposta-form-page__btn--primary">
+                    {{ isEditing ? 'Atualizar' : 'Salvar' }} Proposta
+                </button>
+            </div>
         </div>
     </header>
 
-    <main class="proposta-form-page__card">
-        <app-resource-form 
-            #resourceForm
-            [fields]="formDefs"
-            [initialData]="propostaData"
-            (formSubmit)="saveProposta($event)">
-        </app-resource-form>
-    </main>
+    <!-- Seção 1: Informações da Proposta -->
+    <section class="proposta-form-page__section proposta-form-page__section--proposal-info">
+        <div class="proposta-form-page__section-header">
+            <h2 class="proposta-form-page__section-title">Informações da Proposta</h2>
+            <p class="proposta-form-page__section-subtitle">Dados básicos da proposta e informações do cliente</p>
+        </div>
+        <div class="proposta-form-page__section-content">
+            <app-resource-form 
+                #resourceForm
+                [fields]="formDefs"
+                [initialData]="propostaData"
+                (formSubmit)="saveProposta($event)">
+            </app-resource-form>
+        </div>
+    </section>
+
+    <!-- Seção 2: Adicionar Itens do Orçamento -->
+    <section class="proposta-form-page__section proposta-form-page__section--add-items">
+        <div class="proposta-form-page__section-header">
+            <h2 class="proposta-form-page__section-title">Itens do Orçamento</h2>
+            <p class="proposta-form-page__section-subtitle">Adicione produtos e configure quantidades e descontos</p>
+        </div>
+        <div class="proposta-form-page__section-content">
+            <app-budget-items [showOnlyForm]="true"></app-budget-items>
+        </div>
+    </section>
+
+    <!-- Seção 3: Itens Adicionados -->
+    <section class="proposta-form-page__section proposta-form-page__section--items-list">
+        <div class="proposta-form-page__section-header">
+            <h2 class="proposta-form-page__section-title">Itens Selecionados</h2>
+            <p class="proposta-form-page__section-subtitle">Revise os itens adicionados e o resumo do orçamento</p>
+        </div>
+        <div class="proposta-form-page__section-content">
+            <app-budget-items [showOnlyItems]="true"></app-budget-items>
+        </div>
+    </section>
 </div>

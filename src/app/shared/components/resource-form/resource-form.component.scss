@@ -1,56 +1,61 @@
-@use '../../../../styles/variables' as global;
-
-// Bloco reutilizável para o layout do formulário
+// Bloco reutilizável para o layout do formulário - estilo Excel
 .form-layout {
-    padding: 2rem;
-    background-color: global.$card-background;
-    border-radius: global.$border-radius;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    background-color: white;
+    border: 1px solid #dee2e6;
 
   &__grid {
     display: grid;
     max-width: 100%;
     grid-template-columns: 1fr 1fr; // Duas colunas por padrão
-    gap: 5.5rem;
+    gap: 2rem;
 
     // Em telas menores, passa a ter uma única coluna
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
+      gap: 1rem;
     }
   }
 
   &__group {
     display: flex;
     flex-direction: column;
+    margin-bottom: 1rem;
   }
 
   &__label {
     display: block;
-    font-size: 0.875rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-    color: global.$text-secondary;
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin-bottom: 0.25rem;
+    color: #495057;
   }
 
   &__input, &__select {
     display: block;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    border: 1px solid global.$border-color;
-    border-radius: global.$border-radius;
-    background-color: global.$card-background;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    padding: 0.375rem 0.5rem;
+    font-size: 0.875rem;
+    border: 1px solid #ced4da;
+    border-radius: 2px;
+    background-color: white;
+    transition: border-color 0.15s ease;
 
     &:focus {
       outline: none;
-      border-color: global.$primary-color;
-      box-shadow: 0 0 0 3px lighten(global.$primary-color, 35%);
+      border-color: #0d6efd;
+      box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.25);
+    }
+
+    &:disabled {
+      background-color: #e9ecef;
+      color: #6c757d;
+      cursor: not-allowed;
     }
   }
 
   &__error {
-    color: global.$error-color;
-    font-size: 0.8rem;
+    color: #dc3545;
+    font-size: 0.75rem;
     margin-top: 0.25rem;
   }
 }

@@ -34,33 +34,34 @@ export class AddNewProdutoPageComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.isEditing = true;
-      // Aqui você carregaria os dados do produto para edição
-      // this.produtoService.getById(+id).subscribe(produto => {
-      //   this.produtoData = produto;
-      // });
     }
   }
 
   saveProduto(formData: any): void {
     if (this.isEditing) {
-      // Lógica para atualizar produto existente
       console.log('Atualizando produto:', formData);
-      // this.produtoService.update(this.produtoData!.id, formData).subscribe(() => {
-      //   this.router.navigate(['/produtos']);
-      // });
+      this.adicionarNovoProduto(formData);
     } else {
-      // Lógica para criar novo produto
       console.log('Criando novo produto:', formData);
-      // this.produtoService.create(formData).subscribe(() => {
-      //   this.router.navigate(['/produtos']);
-      // });
+      this.adicionarNovoProduto(formData);
     }
     
-    // Por enquanto, apenas navega de volta
     this.router.navigate(['/produtos']);
   }
 
   cancel(): void {
     this.router.navigate(['/produtos']);
+  }
+
+  adicionarNovoProduto(formData: any): void {
+    this.produtoService.add(formData).subscribe(() => {
+      this.router.navigate(['/produtos']);
+    });
+  }
+
+  deleteProduto(formData: any): void {
+    this.produtoService.delete(formData.id).subscribe(() => {
+      this.router.navigate(['/produtos']);
+    });
   }
 }

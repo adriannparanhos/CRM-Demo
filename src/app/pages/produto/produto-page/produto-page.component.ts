@@ -38,7 +38,7 @@ export class ProdutoPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.produtoService.delete(1).subscribe();
+    
   }
 
   handleSearch(query: string) {

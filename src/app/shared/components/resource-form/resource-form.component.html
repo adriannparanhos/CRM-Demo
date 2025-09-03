@@ -23,6 +23,13 @@
                [placeholder]="field.placeholder || ''"
                class="form-layout__input">
         
+        <input *ngSwitchCase="'number'"
+               [type]="field.type"
+               [id]="field.key"
+               [formControlName]="field.key"
+               [placeholder]="field.placeholder || ''"
+               class="form-layout__input">
+        
         <select *ngSwitchCase="'status'"
                 [id]="field.key"
                 [formControlName]="field.key"

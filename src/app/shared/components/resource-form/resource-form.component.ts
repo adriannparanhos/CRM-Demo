@@ -14,6 +14,7 @@ export class ResourceFormComponent implements OnInit, OnChanges {
   @Input() fields: FormDef[] = [];
   @Input() initialData: any = null; 
   @Output() formSubmit = new EventEmitter<any>();
+  @Output() deleteSubmit = new EventEmitter<any>();
 
   form!: FormGroup;
 
@@ -54,5 +55,9 @@ export class ResourceFormComponent implements OnInit, OnChanges {
     } else {
       this.form.markAllAsTouched();
     }
+  }
+
+  onDelete(): void {
+    this.deleteSubmit.emit(this.initialData.id);
   }
 }
